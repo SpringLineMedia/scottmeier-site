@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>{{name}}</title>
+  <meta name="description" content="{{seo_description}}" />
+  <link rel="canonical" href="https://scottmeier.com/" />
+  <meta name="theme-color" content="#FCFBF9" />
+
+  <!-- Social share (Open Graph + Twitter) -->
+  <meta property="og:type" content="profile" />
+  <meta property="profile:first_name" content="Scott" />
+  <meta property="profile:last_name" content="Meier" />
+  <meta property="og:site_name" content="{{name}}" />
+  <meta property="og:title" content="{{name}}" />
+  <meta property="og:description" content="{{seo_description}}" />
+  <meta property="og:url" content="https://scottmeier.com/" />
+  <meta property="og:image" content="https://scottmeier.com/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{name}}" />
+  <meta name="twitter:description" content="{{seo_description}}" />
+  <meta name="twitter:image" content="https://scottmeier.com/assets/og-image.png" />
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/favicon.svg" />
+
+  <!-- Identity signal: rel="me" ties this site to Scott's profiles. -->
+  <link rel="me" href="{{linkedin_url}}" />
+
+  <!-- Structured data: the strongest on-site signal for a Google Knowledge Panel.
+       Update jobTitle and add more profile URLs to "sameAs" as they're confirmed. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://scottmeier.com/#scott-meier",
+    "name": "{{name_json}}",
+    "alternateName": "Scott G. Meier",
+    "url": "https://scottmeier.com/",
+    "image": "https://scottmeier.com/assets/headshot.jpg",
+    "jobTitle": "Chief Executive Officer",
+    "description": "{{seo_description_json}}",
+    "homeLocation": { "@type": "Place", "name": "Puerto Rico" },
+    "worksFor": [
+      { "@type": "Organization", "name": "Budsies", "url": "https://www.budsies.com/" },
+      { "@type": "Organization", "name": "Petsies" },
+      { "@type": "Organization", "name": "Stuffed Animal Pros" }
+    ],
+    "knowsAbout": [
+      "Custom plush manufacturing",
+      "E-commerce",
+      "Direct-to-consumer brands",
+      "Product development",
+      "Operations",
+      "Data analytics"
+    ],
+    "sameAs": [
+      "{{linkedin_url}}"
+    ]
+  }
+  </script>
+
+  <style>
+    /* ---------- Design tokens: clean white, art-gallery ---------- */
+    :root {
+      --paper:  #FCFBF9;   /* warm gallery white */
+      --paper-2:#FFFFFF;
+      --ink:    #14131A;   /* near-black */
+      --ink-2:  #3C3B45;
+      --muted:  #6C6B75;
+      --faint:  #9C9BA4;
+      --line:   rgba(20, 18, 28, 0.13);
+      --line-2: rgba(20, 18, 28, 0.22);
+      --mat:    #F2F0EA;   /* portrait mat fill */
+      --maxw:   1120px;
+      --serif:  ui-serif, "New York", "Iowan Old Style", "Hoefler Text", Georgia, "Times New Roman", serif;
+      --sans:   ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    /* ---------- Base ---------- */
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    h1, h2, h3 { margin: 0; font-family: var(--serif); font-weight: 600; line-height: 1.06; letter-spacing: -0.012em; }
+    p { margin: 0; }
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+    .narrow { max-width: 680px; }
+
+    /* Accessibility */
+    .skip { position: absolute; left: -999px; top: 0; z-index: 100; background: var(--ink); color: #fff; padding: 10px 16px; }
+    .skip:focus { left: 0; }
+    a:focus-visible, button:focus-visible, .btn:focus-visible {
+      outline: 2px solid var(--ink); outline-offset: 4px;
+    }
+
+    /* Shared type */
+    .kicker {
+      display: block; font: 600 0.76rem/1 var(--sans);
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--faint); margin-bottom: 22px;
+    }
+    .lede { font-family: var(--serif); font-size: clamp(1.3rem, 2.5vw, 1.95rem); font-weight: 500; line-height: 1.32; color: var(--ink); letter-spacing: -0.01em; }
+    .sub { color: var(--muted); font-size: 1.075rem; max-width: 52ch; }
+
+    /* ---------- Links & buttons (understated) ---------- */
+    .link-arrow {
+      position: relative; display: inline-flex; align-items: center; gap: 0.45em;
+      font: 600 0.96rem var(--sans); color: var(--ink); text-decoration: none;
+    }
+    .link-arrow::after {
+      content: ""; position: absolute; left: 0; bottom: -4px; height: 1px; width: 100%;
+      background: var(--ink); transform: scaleX(0); transform-origin: left; transition: transform .32s ease;
+    }
+    .link-arrow:hover::after { transform: scaleX(1); }
+    .link-arrow .arr { transition: transform .25s ease; }
+    .link-arrow:hover .arr { transform: translate(2px, -2px); }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.6em;
+      font: 600 0.8rem/1 var(--sans); letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; padding: 15px 26px; border: 1px solid var(--ink); border-radius: 2px;
+      background: var(--ink); color: var(--paper);
+      transition: background .25s ease, color .25s ease;
+    }
+    .btn:hover { background: transparent; color: var(--ink); }
+
+    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 28px; margin-top: 38px; }
+
+    /* ---------- Masthead ---------- */
+    .masthead { position: sticky; top: 0; z-index: 50; background: rgba(252, 251, 249, 0.85); backdrop-filter: saturate(140%) blur(8px); border-bottom: 1px solid var(--line); }
+    .bar { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+    .wordmark { font: 600 0.82rem var(--sans); letter-spacing: 0.24em; text-transform: uppercase; text-decoration: none; color: var(--ink); }
+    .nav { display: flex; gap: 30px; }
+    .nav a { position: relative; font: 600 0.74rem var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 4px 0; }
+    .nav a::after { content: ""; position: absolute; left: 0; bottom: 0; height: 1px; width: 100%; background: var(--ink); transform: scaleX(0); transform-origin: left; transition: transform .3s ease; }
+    .nav a:hover { color: var(--ink); }
+    .nav a:hover::after { transform: scaleX(1); }
+
+    /* ---------- Hero ---------- */
+    .hero { padding: clamp(56px, 11vw, 130px) 0 clamp(48px, 9vw, 104px); }
+    .hero-grid { display: grid; grid-template-columns: 1.35fr 0.85fr; gap: clamp(40px, 6vw, 88px); align-items: center; }
+    .hero h1 { font-size: clamp(3rem, 8.5vw, 5.75rem); font-weight: 600; margin: 6px 0 26px; }
+    .hero .lede { margin-bottom: 20px; max-width: 20ch; }
+
+    /* Portrait, framed like a gallery piece */
+    .portrait { margin: 0; }
+    .portrait-frame { background: var(--paper-2); border: 1px solid var(--line-2); padding: 14px; box-shadow: 0 1px 0 rgba(0,0,0,.02), 0 36px 64px -42px rgba(20,18,40,.4); }
+    .portrait-img { aspect-ratio: 1 / 1; background: var(--mat); display: grid; place-items: center; overflow: hidden; }
+    .portrait-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .mono-serif { font-family: var(--serif); font-weight: 600; font-size: clamp(3.4rem, 7vw, 5rem); color: var(--ink-2); letter-spacing: 0.02em; }
+    .portrait figcaption { margin-top: 14px; font: 0.78rem var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--faint); text-align: center; }
+
+    /* ---------- Sections ---------- */
+    .section { padding: clamp(58px, 10vw, 116px) 0; border-top: 1px solid var(--line); }
+    .section h2 { font-size: clamp(1.7rem, 4vw, 2.5rem); }
+    .prose .lede { margin-bottom: 26px; }
+    .prose p + p { margin-top: 18px; color: var(--muted); font-size: 1.075rem; }
+
+    .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; padding: 0; margin: 34px 0 0; }
+    .tags li { font: 600 0.72rem var(--sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line-2); border-radius: 999px; padding: 8px 15px; }
+
+
+    /* Contact */
+    .contact .display { font-family: var(--serif); font-weight: 600; font-size: clamp(1.9rem, 5vw, 3rem); letter-spacing: -0.015em; margin-bottom: 18px; }
+
+    /* Footer */
+    .footer { border-top: 1px solid var(--line); padding: 34px 0; }
+    .footer-row { display: flex; flex-wrap: wrap; gap: 12px 26px; justify-content: space-between; align-items: center; font: 0.86rem var(--sans); color: var(--faint); }
+    .footer-row a { color: var(--muted); text-decoration: none; }
+    .footer-row a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+    .footer-links { display: flex; gap: 22px; }
+
+    /* ---------- Reveal-on-scroll ---------- */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.is-visible { opacity: 1; transform: none; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 860px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 44px; }
+      .portrait { order: -1; max-width: 320px; }
+    }
+    @media (max-width: 560px) {
+      .nav { gap: 18px; }
+      .nav .navlink { display: none; }   /* keep just Contact on small screens */
+    }
+
+    /* ---------- Reduced motion ---------- */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="masthead">
+    <div class="container bar">
+      <a class="wordmark" href="/">{{name}}</a>
+      <nav class="nav" aria-label="Primary">
+        <a class="navlink" href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- This is the page TEMPLATE (layout + CSS). The editable words live in
+         content.json, edited visually via Pages CMS; build.mjs combines them into
+         dist/index.html. Edit copy in the CMS, not here. -->
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <span class="kicker">{{kicker}}</span>
+          <h1>{{name}}</h1>
+          <p class="lede">{{hero_lede}}</p>
+          <p class="sub">{{hero_sub}}</p>
+          <div class="actions">
+            <a class="btn" href="{{linkedin_url}}" target="_blank" rel="noopener">Connect on LinkedIn</a>
+          </div>
+        </div>
+
+        <figure class="portrait">
+          <div class="portrait-frame">
+            <div class="portrait-img">
+              <img src="assets/headshot.jpg" alt="{{name}}" />
+            </div>
+          </div>
+          <figcaption>{{name}}</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section reveal">
+      <div class="container">
+        <span class="kicker">About</span>
+        <div class="prose narrow">
+          <p class="lede">{{about_lede}}</p>
+{{about_paragraphs}}
+          <ul class="tags">
+{{tags}}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact" class="section reveal contact">
+      <div class="container">
+        <span class="kicker">Contact</span>
+        <div class="narrow">
+          <p class="display">{{contact_heading}}</p>
+          <p class="sub">{{contact_sub}}</p>
+          <div class="actions">
+            <a class="link-arrow" href="{{linkedin_url}}" target="_blank" rel="noopener">Connect on LinkedIn <span class="arr">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-row">
+      <span>© <span id="year">2026</span> {{name}} &middot; Puerto Rico</span>
+      <span class="footer-links">
+        <a href="{{linkedin_url}}" target="_blank" rel="noopener">LinkedIn</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var revealEls = document.querySelectorAll('.reveal');
+    if (prefersReduced || !('IntersectionObserver' in window)) {
+      revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+    } else {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+        });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+      revealEls.forEach(function (el) { io.observe(el); });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="robots" content="noindex" />
+  <title>Scott Meier share card</title>
+  <!-- Source for assets/og-image.png (1200x630). Re-render with headless Chrome:
+       chrome --headless=new --window-size=1200,630 --screenshot=og-image.png <this url> -->
+  <style>
+    :root {
+      --paper: #FCFBF9; --paper-2: #FFFFFF; --ink: #14131A; --ink-2: #3C3B45;
+      --muted: #6C6B75; --faint: #9C9BA4; --line-2: rgba(20,18,28,0.22); --mat: #F2F0EA;
+      --serif: ui-serif, "New York", "Iowan Old Style", "Hoefler Text", Georgia, "Times New Roman", serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 1200px; height: 630px; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); overflow: hidden; }
+    .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0 92px; gap: 70px; }
+    .kicker { font-size: 17px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); margin-bottom: 26px; }
+    h1 { font-family: var(--serif); font-size: 112px; font-weight: 600; letter-spacing: -0.02em; line-height: 0.98; margin-bottom: 30px; }
+    .lede { font-family: var(--serif); font-size: 37px; font-weight: 500; color: var(--ink-2); line-height: 1.28; max-width: 15ch; margin-bottom: 38px; }
+    .rule { width: 84px; height: 2px; background: var(--ink); margin-bottom: 26px; }
+    .url { font-size: 25px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+    .frame { flex: none; background: var(--paper-2); border: 1px solid var(--line-2); padding: 16px;
+             box-shadow: 0 40px 80px -40px rgba(20,18,40,.45); }
+    .frame .img { width: 312px; height: 390px; background: var(--mat); display: grid; place-items: center; }
+    .frame .img span { font-family: var(--serif); font-weight: 600; font-size: 150px; color: var(--ink-2); }
+    .frame figcaption { margin-top: 14px; text-align: center; font-size: 17px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--faint); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div>
+      <div class="kicker">CEO &middot; Budsies, Petsies &amp; Stuffed Animal Pros</div>
+      <h1>Scott&nbsp;Meier</h1>
+      <div class="lede">Consumer brands people love. And the software that runs them.</div>
+      <div class="rule"></div>
+      <div class="url">scottmeier.com</div>
+    </div>
+    <figure class="frame">
+      <div class="img"><span>SM</span></div>
+      <figcaption>Scott Meier</figcaption>
+    </figure>
+  </div>
+</body>
+</html>
