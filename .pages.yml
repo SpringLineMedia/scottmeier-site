@@ -1,0 +1,48 @@
+# Pages CMS configuration: defines your visual editor.
+# Sign in at https://app.pagescms.org with GitHub, open this repo, edit the fields.
+# Saving commits to GitHub and Cloudflare auto-deploys.
+media:
+  input: assets
+  output: /assets
+
+content:
+  - name: site
+    label: Site copy
+    type: file
+    path: content.json
+    fields:
+      - name: name
+        label: Your name
+        type: string
+      - name: kicker
+        label: Role line (above your name)
+        type: string
+      - name: hero_lede
+        label: Hero headline
+        type: text
+      - name: hero_sub
+        label: Hero paragraph
+        type: text
+      - name: about_lede
+        label: About opening line
+        type: text
+      - name: about_paragraphs
+        label: About paragraphs
+        type: text
+        list: true
+      - name: tags
+        label: Tags and areas
+        type: string
+        list: true
+      - name: contact_heading
+        label: Contact heading
+        type: string
+      - name: contact_sub
+        label: Contact paragraph
+        type: text
+      - name: linkedin_url
+        label: LinkedIn URL
+        type: string
+      - name: seo_description
+        label: Search and social description
+        type: text
